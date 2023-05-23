@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import NavbarApi from "./components/Navbar/Navbar";
+import "bootstrap/dist/css/bootstrap.min.css";
+import MiApi from "./components/MiApi/MiApi";
+import currencyTypes from "./data/currencyTypes.json";
 
 function App() {
+  const [currencyData, setCurrencyData] = useState({});
+  const [indicatorTypes, setIndicatorTypes] = useState(currencyTypes);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <NavbarApi
+        currencyData={currencyData}
+        setCurrencyData={setCurrencyData}
+        indicatorTypes={indicatorTypes}
+        setIndicatorTypes={setIndicatorTypes}
+      />
+      <MiApi
+        currencyData={currencyData}
+        setCurrencyData={setCurrencyData}
+        indicatorTypes={indicatorTypes}
+      />
+    </>
   );
 }
 
